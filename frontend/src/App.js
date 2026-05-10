@@ -29,11 +29,49 @@ const MAPS_LINK = "https://maps.app.goo.gl/UoxXgQaUYQFShvFi6";
 const MAPS_EMBED =
   "https://maps.google.com/maps?q=Purworejo,+Jawa+Tengah,+Indonesia&t=&z=13&ie=UTF8&iwloc=&output=embed";
 
-/* Photo placeholders — user akan replace dengan foto asli */
-const HERO_PHOTO =
-  "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=2000&q=80";
-const SECONDARY_PHOTO =
-  "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1600&q=80";
+/* Real workshop photos (artifacts) */
+const PHOTO_WORKSHOP_KAYU =
+  "https://customer-assets.emergentagent.com/job_kayu-kiln-purworejo/artifacts/8t6yifyw_workshop-kayu-oven-kiln-dry-purworejo-jateng.jpg";
+const PHOTO_HALAMAN_DEPAN =
+  "https://customer-assets.emergentagent.com/job_kayu-kiln-purworejo/artifacts/sz3taxb8_pabrik-furniture-bekas-purworejo-shm-halaman-depan.jpeg";
+const PHOTO_JALAN_UTAMA =
+  "https://customer-assets.emergentagent.com/job_kayu-kiln-purworejo/artifacts/y5xza0dn_jalan-utama-pabrik-furniture-purworejo.png";
+const PHOTO_AREA_PRODUKSI =
+  "https://customer-assets.emergentagent.com/job_kayu-kiln-purworejo/artifacts/rnwxsdh1_workshop-industri-furniture-dijual-purworejo.jpg.jpeg";
+const PHOTO_SITE_PLAN =
+  "https://customer-assets.emergentagent.com/job_kayu-kiln-purworejo/artifacts/0ah6uzjz_peta-gudang-industri-shm-35kva-candisari-purworejo.jpeg";
+
+const HERO_PHOTO = PHOTO_WORKSHOP_KAYU;
+
+const GALLERY = [
+  {
+    src: PHOTO_WORKSHOP_KAYU,
+    title: "Workshop Aktif Kayu Olahan",
+    caption:
+      "Area produksi utama — stok kayu olahan, mesin band saw, planer & sander on-site",
+    span: "large",
+  },
+  {
+    src: PHOTO_HALAMAN_DEPAN,
+    title: "Halaman Depan SHM",
+    caption: "Gerbang & halaman bongkar muat — cukup untuk maneuver kontainer",
+  },
+  {
+    src: PHOTO_JALAN_UTAMA,
+    title: "Pinggir Jalan Nasional III",
+    caption: "Akses langsung — kontainer 40ft lewat tanpa hambatan",
+  },
+  {
+    src: PHOTO_AREA_PRODUKSI,
+    title: "Area Produksi 1.000m²",
+    caption: "Bangunan utama: struktur baja, atap tinggi, lantai cor",
+  },
+  {
+    src: PHOTO_SITE_PLAN,
+    title: "Site Plan Resmi",
+    caption: "Layout tanah 2.893m² menghadap Jalan Nasional III",
+  },
+];
 
 /* =========================================================
    COLOR TOKENS
@@ -897,6 +935,210 @@ const WhyDifferent = () => {
 };
 
 /* =========================================================
+   SECTION: GALLERY (Bento)
+   ========================================================= */
+const Gallery = () => (
+  <section
+    data-testid="gallery-section"
+    style={{
+      background: C.bg,
+      padding: "clamp(80px, 12vh, 140px) clamp(20px, 5vw, 64px)",
+    }}
+  >
+    <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-end",
+          flexWrap: "wrap",
+          gap: 24,
+          marginBottom: 48,
+        }}
+      >
+        <div>
+          <Reveal>
+            <SectionLabel>Galeri Aset</SectionLabel>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2
+              style={{
+                fontSize: "clamp(32px, 4.5vw, 56px)",
+                maxWidth: 760,
+              }}
+            >
+              Lihat sendiri{" "}
+              <em
+                style={{
+                  fontStyle: "italic",
+                  color: C.accent,
+                  fontWeight: 500,
+                }}
+              >
+                kondisi nyata
+              </em>{" "}
+              workshop hari ini.
+            </h2>
+          </Reveal>
+        </div>
+        <Reveal delay={200}>
+          <p
+            style={{
+              fontSize: 14,
+              color: C.textMuted,
+              maxWidth: 320,
+              lineHeight: 1.7,
+            }}
+          >
+            Foto on-site terbaru. Kunjungan langsung dipersilakan kapan saja
+            untuk verifikasi fisik dan dokumen.
+          </p>
+        </Reveal>
+      </div>
+
+      <Reveal delay={150}>
+        <div
+          className="bento-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gridTemplateRows: "minmax(220px, 32vh) minmax(220px, 32vh)",
+            gap: 12,
+          }}
+        >
+          {GALLERY.map((g, i) => (
+            <a
+              key={i}
+              data-testid={`gallery-item-${i}`}
+              href={g.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="gallery-item"
+              style={{
+                position: "relative",
+                gridColumn: g.span === "large" ? "span 2" : "span 1",
+                gridRow: g.span === "large" ? "span 2" : "span 1",
+                overflow: "hidden",
+                borderRadius: 4,
+                border: `1px solid ${C.border}`,
+                background: C.bgPanel,
+                cursor: "zoom-in",
+                display: "block",
+              }}
+            >
+              <img
+                src={g.src}
+                alt={g.title}
+                loading="lazy"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                  transition: "transform 800ms cubic-bezier(0.22,1,0.36,1)",
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "linear-gradient(to top, rgba(17,17,17,0.92) 0%, rgba(17,17,17,0.4) 45%, transparent 70%)",
+                  pointerEvents: "none",
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  padding: g.span === "large" ? "28px 28px 24px" : "18px 18px 16px",
+                }}
+              >
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: 10,
+                    fontWeight: 700,
+                    color: C.accent,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.18em",
+                    marginBottom: 8,
+                  }}
+                >
+                  <span
+                    style={{
+                      width: 6,
+                      height: 6,
+                      borderRadius: 999,
+                      background: C.accent,
+                    }}
+                  />
+                  {String(i + 1).padStart(2, "0")} / {GALLERY.length}
+                </div>
+                <h3
+                  style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: g.span === "large" ? "clamp(22px, 2.4vw, 30px)" : 18,
+                    color: C.text,
+                    fontWeight: 600,
+                    marginBottom: 6,
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {g.title}
+                </h3>
+                <p
+                  style={{
+                    fontSize: g.span === "large" ? 14 : 12.5,
+                    color: C.textMuted,
+                    lineHeight: 1.5,
+                    maxWidth: 480,
+                  }}
+                >
+                  {g.caption}
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </Reveal>
+
+      <Reveal delay={300}>
+        <p
+          style={{
+            marginTop: 32,
+            fontSize: 13,
+            color: C.textMuted,
+            textAlign: "center",
+            fontStyle: "italic",
+          }}
+        >
+          Klik foto untuk perbesar — atau langsung WA kami untuk request foto
+          tambahan & video walkthrough.
+        </p>
+      </Reveal>
+    </div>
+
+    <style>{`
+      .gallery-item:hover img { transform: scale(1.05); }
+      @media (max-width: 900px) {
+        .bento-grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+          grid-template-rows: auto !important;
+        }
+        .bento-grid > a { grid-column: span 1 !important; grid-row: auto !important; min-height: 180px; }
+        .bento-grid > a:first-child { grid-column: span 2 !important; min-height: 240px; }
+      }
+    `}</style>
+  </section>
+);
+
+/* =========================================================
    SECTION: SPECS
    ========================================================= */
 const Specs = () => {
@@ -1754,6 +1996,7 @@ function App() {
       <GlobalStyles />
       <Hero />
       <WhyDifferent />
+      <Gallery />
       <Specs />
       <Personas />
       <FAQ />

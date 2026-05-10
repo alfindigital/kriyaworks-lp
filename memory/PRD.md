@@ -26,22 +26,23 @@ Build a high-converting property landing page in React (single JSX file) for an 
 - Premium industrial feel — bukan iklan murahan
 
 ## What's Been Implemented (2025-12-10)
-- [x] SEO: lang=id, title, meta description, OG tags, Twitter card
+- [x] SEO: lang=id, title, meta description, OG tags (now with real workshop photo), Twitter card
 - [x] JSON-LD: RealEstateListing schema + FAQPage schema
-- [x] Hero: dark bg + workshop photo overlay, H1 keyword-rich, price badge, 2 CTAs (WA primary + Maps secondary), 3 trust badges, quick-stats glassmorphism strip
+- [x] Hero: dark bg + real workshop interior photo overlay, H1 keyword-rich, price badge, 2 CTAs (WA primary + Maps secondary), 3 trust badges, quick-stats glassmorphism strip
 - [x] Pain → Solution → CTA conversion flow above the fold
 - [x] "Kenapa Ini Berbeda" — 3 cards (Oven Kiln Dry, Listrik 35kVA, Jalan Nasional) with stat highlights
+- [x] **Galeri Aset** — 5-photo bento grid: Workshop kayu (large feature) + Halaman Depan + Jalan Nasional III + Area Produksi 1.000m² + Site Plan resmi. Hover zoom, click-to-enlarge, accent numbered indicator
 - [x] Spesifikasi — 10-row clean 2-column table with sidebar copy + WA CTA
 - [x] Untuk Siapa — 4 persona cards with icons + numbered indices
-- [x] Objection Handler — 4-question accordion FAQ (Lucide chevron, smooth max-height transition)
+- [x] Objection Handler — 4-question accordion FAQ
 - [x] Lokasi — Google Maps iframe embed + address card with travel times + open-in-Maps CTA
 - [x] CTA Final — full-width amber section, big dark button, phone tel: link, trust badges
-- [x] Sticky bottom bar mobile only (≤768px) with WA deeplink — verified working at 414px viewport
+- [x] Sticky bottom bar mobile only (≤768px) with WA deeplink
 - [x] Footer with WA + Maps links
 - [x] Subtle "Penawaran serius dilayani langsung" honest urgency (no fake countdown)
 - [x] CTA pulse animation on primary buttons
 - [x] Subtle grain texture overlay on hero & final CTA
-- [x] Photo placeholders (Unsplash industrial) — user akan kirim foto asli untuk diganti
+- [x] **Foto asli workshop terpasang** (5 foto): hero + gallery + OG/JSON-LD image
 
 ## Files Touched
 - `/app/frontend/public/index.html` — SEO meta, JSON-LD, fonts
