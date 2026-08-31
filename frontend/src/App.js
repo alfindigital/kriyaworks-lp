@@ -22,7 +22,7 @@ import {
    PROPERTY CONSTANTS
    ========================================================= */
 const WA_LINK =
-  "https://wa.me/6289619093961?text=Halo,%20saya%20tertarik%20dengan%20workshop%20kayu%20Purworejo";
+  "https://wa.me/YOUR_WHATSAPP_NUMBER?text=Halo,%20saya%20tertarik%20dengan%20workshop%20kayu%20Purworejo";
 const PHONE_DISPLAY = "0896 1909 3961";
 const PHONE_TEL = "tel:+6289619093961";
 const MAPS_LINK = "https://maps.app.goo.gl/UoxXgQaUYQFShvFi6";
@@ -2009,3 +2009,4 @@ function App() {
 }
 
 export default App;
+
